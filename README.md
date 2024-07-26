@@ -1,4 +1,5 @@
 # Link2OneDrive
+Backup your users files from various apps listed below.
 
 ## Create-ScheduleTask.ps1
 
