@@ -1,6 +1,6 @@
 # Link2OneDrive
 
-Create-ScheduleTask.ps1
+##Create-ScheduleTask.ps1
 
   What it does:
   - Creates "C:\ProgramData\Scripts" if doesn't exist.
@@ -10,7 +10,7 @@ Create-ScheduleTask.ps1
   - Runs as User
   - Runs on Login
 
-Create-Backup.ps1
+##Create-Backup.ps1
 
   What it does:
   - Creates "$env:OneDriveCommercial\.DONOTDELETE" in the users OneDrive with "Chrome Favorites", "Signatures", "Sticky Notes", "Firefox Favorites", "Edge Favorites", "Firefox Store Favorites" subdirectories.
@@ -18,7 +18,7 @@ Create-Backup.ps1
   - Copy Outlook Signatures, Chrome Favorites, Firefox Favorites, Firefox (Windows Store) Favorites, Sticky Notes, and Edge Favorites with separate folders for profiles if it finds any.
   - Hides .DONOTDELETE folder from the user.
 
-Restore-Backup.ps1
+##Restore-Backup.ps1
 
   What it does:
   - Copies all of the files from the .DONOTDELETE subdirectories to their respected app paths.
