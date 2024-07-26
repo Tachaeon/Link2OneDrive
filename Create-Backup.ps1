@@ -14,7 +14,7 @@ $PCFile = ((Get-Item "C:\ProgramData\Scripts\$env:COMPUTERNAME.pc" -ErrorAction 
 
 #Signatures
 $SigSource = "$env:Appdata\Microsoft\Signatures"
-$Signatures = Get-ChildItem $SigSource
+$Signatures = Get-ChildItem $SigSource 
 $OneSig = "$BaseDirectory\Signatures\"
 
 #Chrome Favorites
@@ -52,27 +52,37 @@ if ($PCFile -match $env:COMPUTERNAME) {
         #Signatures
         $SourceFile = $Signature.FullName
         $OneSigFile = $OneSig + $Signature.Name
-        New-Item -ItemType HardLink -Path $OneSigFile -Value $SourceFile -ErrorAction SilentlyContinue
+        Copy-Item -Path $SourceFile -Destination $OneSigFile -Force
+        #New-Item -ItemType HardLink -Path $OneSigFile -Value $SourceFile -ErrorAction SilentlyContinue
     }
+
     foreach ($StickyNote in $StickyNotes) {
         #StickyNotes
         $SourceFile = $StickyNote.FullName
         $OneNotesFile = $OneNotes + $StickyNote.Name
-        New-Item -ItemType HardLink -Path $OneNotesFile -Value $SourceFile -ErrorAction SilentlyContinue
+        Copy-Item -Path $SourceFile -Destination $OneNotesFile -Force
+        #New-Item -ItemType HardLink -Path $OneNotesFile -Value $SourceFile -ErrorAction SilentlyContinue
     }
+
     #Chrome Bookmarks
-    New-Item -ItemType HardLink -Path $OneBook -Value $ChromeBookmarks -ErrorAction SilentlyContinue
+    Copy-Item -Path $ChromeBookmarks -Destination $OneBook -Force
+    #New-Item -ItemType HardLink -Path $OneBook -Value $ChromeBookmarks -ErrorAction SilentlyContinue
 
     #Firefox
-    New-Item -ItemType HardLink -Path "$OneFox\$FoxPlacesName" -Value $FoxPlacesPath -ErrorAction SilentlyContinue
-    New-Item -ItemType HardLink -Path "$OneFox\$FoxFavIconsName" -Value $FoxFavIconsPath -ErrorAction SilentlyContinue
+    Copy-Item -Path $FoxPlacesPath -Destination "$OneFox\$FoxPlacesName" -Force
+    Copy-Item -Path $FoxFavIconsPath -Destination "$OneFox\$FoxFavIconsName" -Force
+    #New-Item -ItemType HardLink -Path "$OneFox\$FoxPlacesName" -Value $FoxPlacesPath -ErrorAction SilentlyContinue
+    #New-Item -ItemType HardLink -Path "$OneFox\$FoxFavIconsName" -Value $FoxFavIconsPath -ErrorAction SilentlyContinue
 
     #Firefox Windows Store
-    New-Item -ItemType HardLink -Path "$OneFoxStore\$FoxPlacesName" -Value $FoxPlacesStorePath -ErrorAction SilentlyContinue
-    New-Item -ItemType HardLink -Path "$OneFoxStore\$FoxFavIconsName" -Value $FoxFavIconsStorePath -ErrorAction SilentlyContinue
+    Copy-Item -Path $FoxPlacesStorePath -Destination "$OneFoxStore\$FoxPlacesName" -Force
+    Copy-Item -Path $FoxFavIconsStorePath -Destination "$OneFoxStore\$FoxFavIconsName" -Force
+    #New-Item -ItemType HardLink -Path "$OneFoxStore\$FoxPlacesName" -Value $FoxPlacesStorePath -ErrorAction SilentlyContinue
+    #New-Item -ItemType HardLink -Path "$OneFoxStore\$FoxFavIconsName" -Value $FoxFavIconsStorePath -ErrorAction SilentlyContinue
 
     #Edge Bookmarks
-    New-Item -ItemType HardLink -Path $OneEdge -Value $DefaultEdge -ErrorAction SilentlyContinue
+    Copy-Item -Path $DefaultEdge -Destination $OneEdge -Force
+    #New-Item -ItemType HardLink -Path $OneEdge -Value $DefaultEdge -ErrorAction SilentlyContinue
 
     # Define the source and target directories
     $sourceDirectory = "$env:LOCALAPPDATA\Microsoft\Edge\User Data"
