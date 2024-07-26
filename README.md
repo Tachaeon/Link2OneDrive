@@ -31,6 +31,4 @@ Backup your users files from various apps listed below.
   What it does:
   - Starts the scheduled task "Signature, Favorites, & Sticky Notes Backup"
 
-```sh
-The purpose of the .pc file is so if the user gets issued a new computer or the computer name changes, Create-Backup won't overwrite the files carried over from OneDrive.
-```
+> The purpose of the .pc file is so if the user gets issued a new computer or the computer name changes, Create-Backup won't overwrite the files carried over from OneDrive.
