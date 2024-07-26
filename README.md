@@ -26,4 +26,9 @@ Backup your users files from various apps listed below.
   - Removes *.pc from C:\ProgramData\Scripts
   - Creates a new .pc file using the new PC name.
 
+## Force-Backup.ps1
+
+  What it does:
+  - Starts the scheduled task "Signature, Favorites, & Sticky Notes Backup"
+
 The purpose of the .pc file is so if the user gets issued a new computer or the computer name changes, Create-Backup won't overwrite the files carried over from OneDrive.
